@@ -44,7 +44,7 @@ public class Cliente
     {
         return Nombre;
     }
-
+    
     /**
      * Set the value of Nombre
      *
@@ -54,7 +54,7 @@ public class Cliente
     {
         this.Nombre = Nombre;
     }
-
+    
     private String Direccion;
 
     /**

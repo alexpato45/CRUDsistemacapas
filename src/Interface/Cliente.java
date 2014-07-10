@@ -95,8 +95,18 @@ public class Cliente extends javax.swing.JFrame
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -225,8 +235,28 @@ public class Cliente extends javax.swing.JFrame
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        
+       gestioncliente.getCliente().setCedula(txtcedula.getText());
+       
     }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        gestioncliente.getCliente().setCedula(txtcedula.getText());
+        gestioncliente.getCliente().setNombre(txtnombre.getText());
+        gestioncliente.getCliente().setDireccion(txtdireccion.getText());
+        gestioncliente.getCliente().setCupo(Double.parseDouble(txtcupo.getText()));
+        try
+        {
+            gestioncliente.Nuevo();
+        }
+        catch(SQLException ex)
+        {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }        
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments

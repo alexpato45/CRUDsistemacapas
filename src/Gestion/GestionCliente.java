@@ -19,7 +19,7 @@ import javax.swing.JTable;
  */
 public class GestionCliente implements IGestion
 {
-    private Cliente cliente= new Cliente ("","","",0);
+    private Cliente cliente = new Cliente ("","","",0);
 
     public GestionCliente() 
     {
@@ -59,7 +59,7 @@ public class GestionCliente implements IGestion
         try
         {
             Conexion.GetInstancia().Conectar();
-            Conexion.GetInstancia().Ejecutar("UPDATE `cliente` SET Direccion = '"+cliente.getDireccion()+"', Cupo = '"+cliente.getCupo()+"' WHERE Cedula = "+cliente.getCedula());
+            Conexion.GetInstancia().Ejecutar("UPDATE cliente SET Direccion = '"+cliente.getDireccion()+"', Cupo = '"+cliente.getCupo()+"' WHERE Cedula = "+cliente.getCedula());
             Conexion.GetInstancia().Desconectar();    
         }
         catch(SQLException ex)
@@ -70,8 +70,11 @@ public class GestionCliente implements IGestion
 
     @Override
     public void Nuevo() throws SQLException 
-    {
-        
+    {    
+        cliente.setCedula("SD");
+        cliente.setNombre("SD");
+        cliente.setDireccion("SD");
+        cliente.setCupo(00.00);
     }
 
     @Override
@@ -95,8 +98,10 @@ public class GestionCliente implements IGestion
         try
         {            
             Conexion.GetInstancia().Conectar();
-            //JTable jb = 
-            Conexion.GetInstancia().Ejecutar("DELETE FROM Cliente WHERE Cedula = "+cliente.getCedula());
+           JTable jb = new JTable();
+           //jb = 
+           Conexion.GetInstancia().Ejecutar("DELETE FROM Cliente WHERE Cedula = "+cliente.getCedula());
+            
             Conexion.GetInstancia().Desconectar(); 
         }
         catch(SQLException ex)
