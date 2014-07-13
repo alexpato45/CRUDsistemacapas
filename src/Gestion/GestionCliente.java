@@ -71,9 +71,9 @@ public class GestionCliente implements IGestion
     @Override
     public void Nuevo() throws SQLException 
     {    
-        cliente.setCedula("SD");
-        cliente.setNombre("SD");
-        cliente.setDireccion("SD");
+        cliente.setCedula("");
+        cliente.setNombre("");
+        cliente.setDireccion("");
         cliente.setCupo(00.00);
     }
 
@@ -98,8 +98,7 @@ public class GestionCliente implements IGestion
         try
         {            
             Conexion.GetInstancia().Conectar();
-           JTable jb = new JTable();
-           //jb = 
+           JTable jb = new JTable();           
            Conexion.GetInstancia().Ejecutar("DELETE FROM Cliente WHERE Cedula = "+cliente.getCedula());
             
             Conexion.GetInstancia().Desconectar(); 
